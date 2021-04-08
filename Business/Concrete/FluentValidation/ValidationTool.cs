@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿using Core.Utilities.Results;
+using FluentValidation;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,13 +9,14 @@ namespace Business.Concrete.FluentValidation
 {
     public class ValidationTool
     {
-        public static void Validate (IValidator validator, IValidationContext entity)
+        public static IDataResult<ValidationResult> Validate(IValidator validator, IValidationContext entity)
         {
             var result = validator.Validate(entity);
             if (result.Errors.Count > 0)
             {
-                throw new ValidationException(result.Errors);
+                return new ErrorDataResult<ValidationResult>(result);
             }
+            return new SuccessDataResult<ValidationResult>();
         }
     }
 }

@@ -17,9 +17,9 @@ namespace DataAccess.Concrete.InMemory
     {
             _products = new List<Product>
             {
-                new Product{Id=1, BrandId=1, ColorId=1, DailyPrice=186000,ModelYear=2021,Description="Mavi Opel Combo"},
-                new Product{Id=2, BrandId=1, ColorId=2, DailyPrice=1500000,ModelYear=2021,Description="Gri Mercedes E300"},
-                new Product{Id=3, BrandId=2, ColorId=2, DailyPrice=1400000,ModelYear=2021,Description="Gri Mercedes CLA45"},
+                new Product{Id=1, BrandId=1, ColorId=1, DailyPrice=18600,ModelYear=2021,Description="Mavi Opel Combo"},
+                new Product{Id=2, BrandId=1, ColorId=2, DailyPrice=150000,ModelYear=2021,Description="Gri Mercedes E300"},
+                new Product{Id=3, BrandId=2, ColorId=2, DailyPrice=140000,ModelYear=2021,Description="Gri Mercedes CLA45"},
                 new Product{Id=4, BrandId=3, ColorId=3, DailyPrice=300000,ModelYear=2020,Description="Turuncu Renault Captur"},
             };
      }
