@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.Concrete.Utilities
+namespace Business.Concrete.FluentValidation
 {
     public class ValidationTool
     {

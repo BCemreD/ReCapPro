@@ -16,6 +16,7 @@ namespace ConsoleUI
             { Name="Renault", Id = 5, BrandId = 3, ColorId = 1, ModelYear = 2020, DailyPrice = 340000, Description = "Mavi Renault Zoe" };
             productManager.Add(product);
             productManager.GetAll().ForEach(p => Console.WriteLine(p.Name));
+            productManager.GetProductDetails().ForEach(p => Console.WriteLine("{0}{1}{2}{3}", p.Name, p.BrandName, p.ColorName, p.DailyPrice));
           
 
 

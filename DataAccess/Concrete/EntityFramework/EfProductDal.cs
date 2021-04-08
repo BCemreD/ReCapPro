@@ -1,5 +1,7 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess.EntityFramework;
+using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,53 +11,23 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfProductDal : IProductDal
+    public class EfProductDal : EfEntityRepositoryBase<Product, ProductContext>,IProductDal
     {
-        public void Add(Product entity)
+       public List<ProductDetailDto> GetProductDetails()
         {
             using (ProductContext context = new ProductContext())
             {
-                var addedEntity = context.Entry(entity);
-                addedEntity.State = EntityState.Added;
-                context.SaveChanges();
-            }
-        }
-
-        public void Delete(Product entity)
-        {
-            using (ProductContext context = new ProductContext())
-            {
-                var deletedEntity = context.Entry(entity);
-                deletedEntity.State = EntityState.Deleted;
-                context.SaveChanges();
-            }
-        }
-
-        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
-        {
-            using (ProductContext context = new ProductContext())
-            {
-                   return filter == null
-                    ? context.Set<Product>().ToList() : context.Set<Product>().Where(filter).ToList();
-                
-            }
-        }
-        public Product Get(Expression<Func<Product, bool>> filter)
-        {
-            using (ProductContext context = new ProductContext())
-            {
-                return context.Set<Product>().SingleOrDefault(filter);
-            }
-        }
-
-
-        public void Update(Product entity)
-        {
-            using (ProductContext context = new ProductContext())
-            {
-                var updatedEntity = context.Entry(entity);
-                updatedEntity.State = EntityState.Modified;
-                context.SaveChanges();
+                var result = from p in context.Cars
+                             join b in context.Brands on p.BrandId equals b.BrandId
+                             join c in context.Colors on p.ColorId equals c.ColorId
+                             select new ProductDetailDto
+                             {
+                                 Name = p.Name,
+                                 BrandName = b.BrandName,
+                                 ColorName = c.ColorName,
+                                 DailyPrice = p.DailyPrice
+                             };
+                return result.ToList();
             }
         }
     }

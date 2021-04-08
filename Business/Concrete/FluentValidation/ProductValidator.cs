@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.Concrete.Utilities.FluentValidation
+namespace Business.Concrete.FluentValidation
 {
     public class ProductValidator:AbstractValidator<Product>
     {

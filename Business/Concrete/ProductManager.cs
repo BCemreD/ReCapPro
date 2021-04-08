@@ -1,13 +1,10 @@
 ﻿using Business.Abstract;
-using Business.Concrete.Utilities;
-using Business.Concrete.Utilities.FluentValidation;
+using Business.Concrete.FluentValidation;
 using DataAccess.Abstract;
-using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
+using Entities.DTOs;
 using FluentValidation;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Business.Concrete
 {
@@ -51,6 +48,10 @@ namespace Business.Concrete
        public List<Product> GetByColorId(int id)
         {
             return _productDal.GetAll(p => p.ColorId == id);
+        }
+        public List<ProductDetailDto> GetProductDetails()
+        {
+            return _productDal.GetProductDetails();
         }
     }
 }
