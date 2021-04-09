@@ -15,7 +15,8 @@ namespace Business.Concrete
 {
     public class ColorManager : IColorService
     {
-        IColorDal _colorDal;
+        private IColorDal _colorDal;
+       
         public ColorManager(IColorDal colorDal)
         {
             _colorDal = colorDal;
@@ -32,26 +33,20 @@ namespace Business.Concrete
 
         public IResult Add(Color color)
         {
-            IDataResult<ValidationResult> validationResult = ValidationTool.Validate(new ProductValidator(), new ValidationContext<Color>(color));
-            if (validationResult.Success == false)
-            {
-                return new ErrorDataResult<ValidationResult>(validationResult.Data);
-            }
-          
             _colorDal.Add(color);
-            return new SuccessResult(Messages.CarAdded);
+            return new SuccessResult(Messages.ColorAdded);
         }
 
         public IResult Update(Color color)
         {
             _colorDal.Update(color);
-            return new SuccessResult(Messages.CarUpdated);
+            return new SuccessResult(Messages.ColorUpdated);
         }
 
         public IResult Delete(Color color)
         {
             _colorDal.Delete(color);
-            return new SuccessResult(Messages.CarDeleted);
+            return new SuccessResult(Messages.ColorDeleted);
         }
     }
 }
