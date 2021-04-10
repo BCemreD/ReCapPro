@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspect.Autofac;
 using Business.Concrete.FluentValidation;
 using Business.Constants;
 using Core.Utilities.Results;
@@ -32,6 +33,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll());
         }
 
+        [SecuredOperation("rental.add,moderator,admin")]
         public IResult Add(Brand brand)
         {
             ValidationTool.Validate(new ProductValidator(), new ValidationContext<Brand>(brand));
@@ -41,6 +43,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.BrandAdded);
         }
 
+        [SecuredOperation("rental.update,moderator,admin")]
         public IResult Update(Brand brand)
         {
       
@@ -49,6 +52,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.BrandUpdated);
         }
 
+        [SecuredOperation("rental.delete,moderator,admin")]
         public IResult Delete(Brand brand)
         {
      

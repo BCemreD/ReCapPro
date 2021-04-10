@@ -3,9 +3,7 @@ using Core.Utilities.Interceptors;
 using Core.Validation;
 using FluentValidation;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Core.Aspects.Autofac
 {

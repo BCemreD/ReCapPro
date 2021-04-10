@@ -1,9 +1,4 @@
-﻿using Core.Utilities.Results;
-using FluentValidation;
-using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FluentValidation;
 
 namespace Core.Validation
 {

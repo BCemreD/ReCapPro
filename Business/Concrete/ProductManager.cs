@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspect.Autofac;
 using Business.Concrete.FluentValidation;
 using Business.Constants;
 using Core.Aspects.Autofac;
@@ -31,17 +32,21 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductDetails());
         }
         [ValidationAspect(typeof(ProductValidator))]
+
+        [SecuredOperation("product.add,moderator,admin")]
         public IResult Add(Product product)
         {
            _productDal.Add(product);
             return new SuccessResult(Messages.CarAdded);
         }
 
+        [SecuredOperation("product.delete,moderator,admin")]
         public IResult Delete(Product product)
         {
             return new SuccessResult(Messages.CarDeleted);
         }
 
+        [SecuredOperation("product.update,moderator,admin")]
         public IResult Update(Product product)
         {
             return new SuccessResult(Messages.CarUpdated);
