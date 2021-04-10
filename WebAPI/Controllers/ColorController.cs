@@ -12,7 +12,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ColorController: Controller
     { 
-        private IColorService _colorService;
+        private readonly IColorService _colorService;
 
         public ColorController(IColorService colorService)
         {
@@ -24,9 +24,9 @@ namespace WebAPI.Controllers
         {
             var result = _colorService.GetById(id);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -36,9 +36,9 @@ namespace WebAPI.Controllers
         {
             var result = _colorService.GetAll();
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -48,9 +48,9 @@ namespace WebAPI.Controllers
         {
             var result = _colorService.Add(color);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -60,9 +60,9 @@ namespace WebAPI.Controllers
         {
             var result = _colorService.Update(color);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -72,9 +72,9 @@ namespace WebAPI.Controllers
         {
             var result = _colorService.Delete(color);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }

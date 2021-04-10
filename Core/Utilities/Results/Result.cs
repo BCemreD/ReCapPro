@@ -16,5 +16,6 @@ namespace Core.Utilities.Results
         {
             Success = success;
         }
+        
     }
 }

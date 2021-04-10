@@ -12,7 +12,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class UserController : Controller
     {
-        private IUserService _userService;
+        private readonly IUserService _userService;
 
         public UserController(IUserService userService)
         {
@@ -24,9 +24,9 @@ namespace WebAPI.Controllers
         {
             var result = _userService.GetById(id);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -36,9 +36,9 @@ namespace WebAPI.Controllers
         {
             var result = _userService.GetAll();
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -48,9 +48,9 @@ namespace WebAPI.Controllers
         {
             var result = _userService.Add(user);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -60,9 +60,9 @@ namespace WebAPI.Controllers
         {
             var result = _userService.Update(user);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -72,9 +72,9 @@ namespace WebAPI.Controllers
         {
             var result = _userService.Delete(user);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }

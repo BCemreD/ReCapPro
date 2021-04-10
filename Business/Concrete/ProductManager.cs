@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Concrete.FluentValidation;
 using Business.Constants;
+using Core.Aspects.Autofac;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -12,7 +13,7 @@ namespace Business.Concrete
 {
     public class ProductManager : IProductService
     {
-        private IProductDal _productDal;
+        private readonly IProductDal _productDal;
         public ProductManager(IProductDal productDal)
         {
             _productDal = productDal;
@@ -29,11 +30,10 @@ namespace Business.Concrete
         public IDataResult<List<ProductDetailDto>> GetProductDetails(){
             return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductDetails());
         }
-
+        [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
-            ValidationTool.Validate(new ProductValidator(), new ValidationContext<Product>(product));
-            _productDal.Add(product);
+           _productDal.Add(product);
             return new SuccessResult(Messages.CarAdded);
         }
 

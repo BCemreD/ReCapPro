@@ -12,7 +12,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ProductController: Controller
     {
-     private IProductService _productService;
+     private readonly  IProductService _productService;
 
         public ProductController(IProductService productService)
         {
@@ -24,9 +24,9 @@ namespace WebAPI.Controllers
         {
             var result = _productService.GetById(id);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -36,9 +36,9 @@ namespace WebAPI.Controllers
         {
             var result = _productService.GetAll();
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -48,9 +48,9 @@ namespace WebAPI.Controllers
         {
             var result = _productService.GetProductDetails();
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -60,9 +60,9 @@ namespace WebAPI.Controllers
         {
             var result = _productService.GetByBrandId(id);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -72,9 +72,9 @@ namespace WebAPI.Controllers
         {
             var result = _productService.GetByColorId(id);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -84,9 +84,9 @@ namespace WebAPI.Controllers
         {
             var result = _productService.Add(product);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -96,9 +96,9 @@ namespace WebAPI.Controllers
         {
             var result = _productService.Update(product);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -108,9 +108,9 @@ namespace WebAPI.Controllers
         {
             var result = _productService.Delete(product);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }   }

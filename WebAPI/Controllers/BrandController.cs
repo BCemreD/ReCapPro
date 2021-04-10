@@ -11,7 +11,7 @@ namespace WebAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class BrandController: Controller
-    {private IBrandService _brandService;
+    {private readonly IBrandService _brandService;
 
         public BrandController(IBrandService brandService)
         {
@@ -23,9 +23,9 @@ namespace WebAPI.Controllers
         {
             var result = _brandService.GetById(id);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -34,10 +34,10 @@ namespace WebAPI.Controllers
         public IActionResult GetAll()
         {
             var result = _brandService.GetAll();
-            if (result.Success)
-            {
+            if (result.Success) ;
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -47,9 +47,9 @@ namespace WebAPI.Controllers
         {
             var result = _brandService.Add(brand);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -59,9 +59,9 @@ namespace WebAPI.Controllers
         {
             var result = _brandService.Update(brand);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -71,9 +71,9 @@ namespace WebAPI.Controllers
         {
             var result = _brandService.Delete(brand);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }

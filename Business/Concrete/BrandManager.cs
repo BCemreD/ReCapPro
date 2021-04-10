@@ -2,6 +2,7 @@
 using Business.Concrete.FluentValidation;
 using Business.Constants;
 using Core.Utilities.Results;
+using Core.Validation;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using FluentValidation;
@@ -13,7 +14,7 @@ namespace Business.Concrete
 {
     public class BrandManager : IBrandService
     {
-        IBrandDal _brandDal;
+       private readonly  IBrandDal _brandDal;
         public BrandManager(IBrandDal brandDal)
         {
             _brandDal = brandDal;

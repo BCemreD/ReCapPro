@@ -12,7 +12,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class CustomerController: Controller
     {
-        private ICustomerService _customerService;
+        private readonly ICustomerService _customerService;
 
         public CustomerController(ICustomerService customerService)
         {
@@ -24,10 +24,7 @@ namespace WebAPI.Controllers
         {
             var result = _customerService.GetById(id);
             if (result.Success)
-            {
                 return Ok(result);
-            }
-
             return BadRequest(result);
         }
 
@@ -36,10 +33,7 @@ namespace WebAPI.Controllers
         {
             var result = _customerService.GetAll();
             if (result.Success)
-            {
-                return Ok(result);
-            }
-
+               return Ok(result);
             return BadRequest(result);
         }
 
@@ -48,10 +42,7 @@ namespace WebAPI.Controllers
         {
             var result = _customerService.Add(customer);
             if (result.Success)
-            {
                 return Ok(result);
-            }
-
             return BadRequest(result);
         }
 
@@ -60,11 +51,8 @@ namespace WebAPI.Controllers
         {
             var result = _customerService.Update(customer);
             if (result.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest(result);
+               return Ok(result);
+             return BadRequest(result);
         }
 
         [HttpPost("delete")]
@@ -72,9 +60,9 @@ namespace WebAPI.Controllers
         {
             var result = _customerService.Delete(customer);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }

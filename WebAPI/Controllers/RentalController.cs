@@ -14,7 +14,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class RentalController : Controller
     {
-        private IRentalService _rentalService;
+        private readonly IRentalService _rentalService;
 
         public RentalController(IRentalService rentalService)
         {
@@ -26,9 +26,9 @@ namespace WebAPI.Controllers
         {
             var result = _rentalService.GetById(id);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -38,9 +38,9 @@ namespace WebAPI.Controllers
         {
             var result = _rentalService.GetAll();
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -50,9 +50,9 @@ namespace WebAPI.Controllers
         {
             var result = _rentalService.Add(rental);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -62,9 +62,9 @@ namespace WebAPI.Controllers
         {
             var result = _rentalService.Update(rental);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
@@ -74,9 +74,9 @@ namespace WebAPI.Controllers
         {
             var result = _rentalService.Delete(rental);
             if (result.Success)
-            {
+            
                 return Ok(result);
-            }
+            
 
             return BadRequest(result);
         }
