@@ -22,7 +22,7 @@ namespace Entities.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Entities.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Entities.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Entities.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Entities.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] mercedes_cla {
+        public static byte[] mercedes_cla {
             get {
                 object obj = ResourceManager.GetObject("mercedes_cla", resourceCulture);
                 return ((byte[])(obj));
@@ -73,7 +73,7 @@ namespace Entities.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] mercedes_e300 {
+        public static byte[] mercedes_e300 {
             get {
                 object obj = ResourceManager.GetObject("mercedes_e300", resourceCulture);
                 return ((byte[])(obj));
@@ -83,7 +83,7 @@ namespace Entities.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] opel_combo {
+        public static byte[] opel_combo {
             get {
                 object obj = ResourceManager.GetObject("opel_combo", resourceCulture);
                 return ((byte[])(obj));
@@ -93,7 +93,7 @@ namespace Entities.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Orta22020renaultzoe {
+        public static byte[] Orta22020renaultzoe {
             get {
                 object obj = ResourceManager.GetObject("Orta22020renaultzoe", resourceCulture);
                 return ((byte[])(obj));
@@ -103,7 +103,7 @@ namespace Entities.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] renault_captur {
+        public static byte[] renault_captur {
             get {
                 object obj = ResourceManager.GetObject("renault_captur", resourceCulture);
                 return ((byte[])(obj));

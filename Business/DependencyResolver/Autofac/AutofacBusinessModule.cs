@@ -7,6 +7,7 @@ using Core.Utilities.Interceptors;
 using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Http;
 using System.Reflection;
 using Module = Autofac.Module;
 
@@ -44,6 +45,7 @@ namespace Business.DependencyResolver.Autofac
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
 
+            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
 
 
             var assembly = Assembly.GetExecutingAssembly();
