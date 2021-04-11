@@ -56,7 +56,7 @@ namespace Business.Concrete
             public IResult Update(CarImage carImage, IFormFile file)
             {
                 var carImageToUpdate = _carImageDal.Get(p => p.Id == carImage.Id);
-                carImage.CarId = carImageToUpdate.CarId;
+                carImage.Id = carImageToUpdate.Id;
                 carImage.ImagePath = new FileManagerOnDisk().Update(carImageToUpdate.ImagePath, file, CreateNewPath(file));
                 carImage.Date = DateTime.Now;
                 _carImageDal.Update(carImage);
