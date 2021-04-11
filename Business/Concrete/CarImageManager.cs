@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspect.Autofac;
 using Business.Constants;
+using Core.Aspects.Autofac;
 using Core.Utilities.Business;
 using Core.Utilities.FileSystems;
 using Core.Utilities.Results;
@@ -31,14 +32,15 @@ namespace Business.Concrete
             {
                 return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll());
             }
-            public IDataResult<List<CarImage>> GetImagesById(int id)
+        [CacheAspect]
+        public IDataResult<List<CarImage>> GetImagesById(int id)
             {
                 var result = _carImageDal.GetAll(p => p.Id == id);
                 IfCarImageOfCarNotExistsAddDefault(result, id);
                 return new SuccessDataResult<List<CarImage>>(result);
             }
-
-            [SecuredOperation("carimage.add,moderator,admin")]
+        [CacheRemoveAspect("IProductImageService.Get")]
+        [SecuredOperation("carimage.add,moderator,admin")]
             public IResult Add(CarImage carImage, IFormFile file)
             {
                 var result = BusinessRules.Run(
@@ -49,8 +51,8 @@ namespace Business.Concrete
                 _carImageDal.Add(carImage);
                 return new SuccessResult(Messages.CarImageAdded);
             }
-
-            [SecuredOperation("carimage.update,moderator,admin")]
+        [CacheRemoveAspect("IProductImageService.Get")]
+        [SecuredOperation("carimage.update,moderator,admin")]
             public IResult Update(CarImage carImage, IFormFile file)
             {
                 var carImageToUpdate = _carImageDal.Get(p => p.Id == carImage.Id);
@@ -60,8 +62,8 @@ namespace Business.Concrete
                 _carImageDal.Update(carImage);
                 return new SuccessResult(Messages.CarImageUpdated);
             }
-
-            [SecuredOperation("carimage.delete,moderator,admin")]
+        [CacheRemoveAspect("IProductImageService.Get")]
+        [SecuredOperation("carimage.delete,moderator,admin")]
             public IResult Delete(CarImage carImage)
             {
                 new FileManagerOnDisk().Delete(carImage.ImagePath);

@@ -9,7 +9,7 @@ using System.Text;
 namespace Business.Abstract
 {
     public interface IAuthService
-    {
+    {//doğrulama yönteminin metotları
         IDataResult<User> Register(UserRegisterDto userRegisterDto, string password);
         IDataResult<User> Login(UserLoginDto userLoginDto);
         IResult UserExists(string email);
